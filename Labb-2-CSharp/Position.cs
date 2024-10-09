@@ -12,11 +12,17 @@ struct Position
     public int x;
     public int y;
 
-    public double DistanceTo(Position other)
+    public Position(int x, int y)
     {
-        double posX = other.x - this.x;
-        double posY = other.y - this.y;
-        return Math.Sqrt(posX * posX + posY * posY);
+        this.x = x;
+        this.y = y;
+    }
+
+    public int DistanceTo(Position other)
+    {
+        int posX = other.x - this.x;
+        int posY = other.y - this.y;
+        return (int)Math.Round(Math.Sqrt(posX * posX + posY * posY));
     }
     public int VerticalDistanceTo(Position position) => Math.Abs(position.x - this.x);
     public int HorisontalDistanceTo(Position position) => Math.Abs(position.y - this.y);

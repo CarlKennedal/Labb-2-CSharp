@@ -27,6 +27,7 @@ public class LevelData
                             var player = new Player();
                             player.XPos = indexOfX;
                             player.YPos = indexOfY;
+                            player.Position = new Position(indexOfX, indexOfY);
                             elements.Add(player);
                             break;
 
@@ -34,6 +35,7 @@ public class LevelData
                             var wall = new Wall();
                             wall.XPos = indexOfX;
                             wall.YPos = indexOfY;
+                            wall.Position = new Position(indexOfX, indexOfY);
                             elements.Add(wall);
                             break;
 
@@ -41,6 +43,7 @@ public class LevelData
                             var rat = new Rat();
                             rat.XPos = indexOfX;
                             rat.YPos = indexOfY;
+                            rat.Position = new Position(indexOfX, indexOfY);
                             elements.Add(rat);
                             break;
 
@@ -48,6 +51,7 @@ public class LevelData
                             var snake = new Snake();
                             snake.XPos = indexOfX;
                             snake.YPos = indexOfY;
+                            snake.Position = new Position(indexOfX, indexOfY);
                             elements.Add(snake);
                             break;
                     }

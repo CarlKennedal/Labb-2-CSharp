@@ -11,7 +11,11 @@ public abstract class LevelElement
     public abstract int YPos { get; set; }
     public abstract char Type { get; set; }
 
-    // Element contact metod. Hanterar när mobs och spelare går in i väggar eller varandra.
+    public void Collision()
+    {
+        
+    }
+    // Gör en Element contact metod. Hanterar när mobs och spelare går in i väggar eller varandra.
     public void Draw()
     {
         switch (Type) 

@@ -19,13 +19,15 @@ class Rat : Enemy
     public override char Type { get; set; } = 'r';
     public override int XPos { get; set; }
     public override int YPos { get; set; }
+    public Position Position { get; set; }
+
     public override int attackDice { get; set; }
     public override int defenseDice { get; set; }
     public override string Name { get; set; } = "Rat";
     public override int healthPoints { get; set; } = 10;
+    public int move = 0;
     public override void Update()
     {
-        int move = 0;
         Random randomDirection = new Random();
         Direction randomDir = (Direction)randomDirection.Next(0, 4);
         switch (randomDir)

@@ -14,11 +14,14 @@ class Player : LivingElement
     public int defenseDice { get; set; }
     public override int XPos { get; set; }
     public override int YPos { get; set; }
-    public double renderDistance = 5;
+    public Position Position { get; set; }
+
+    public int renderDistance = 5;
+    public int move = 0;
 
     public override void Update()
     {
-        int move = 0;
+        
         ConsoleKeyInfo movementInput = Console.ReadKey();
         switch (movementInput.Key)
         {
