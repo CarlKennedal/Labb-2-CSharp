@@ -16,6 +16,8 @@ class Snake : Enemy
     public override int healthPoints { get; set; } = 25;
     public override int attackDice { get; set; }
     public override int defenseDice { get; set; }
+    public override ConsoleColor Color { get; set; } = ConsoleColor.Green;
+
 
     public int move;
     public override void Update()
@@ -32,7 +34,7 @@ class Snake : Enemy
                 move = YPos + 1;
                 Console.SetCursorPosition(XPos, YPos);
                 Console.Write(' ');
-                Console.SetCursorPosition(XPos, YPos - 1);
+                Console.SetCursorPosition(XPos, YPos + 1);
                 Console.Write(Type);
                 YPos += 1;
                 // Flytta på y.
@@ -42,7 +44,7 @@ class Snake : Enemy
                 move = XPos + 1;
                 Console.SetCursorPosition(XPos, YPos);
                 Console.Write(' ');
-                Console.SetCursorPosition(XPos, YPos - 1);
+                Console.SetCursorPosition(XPos + 1, YPos);
                 Console.Write(Type);
                 XPos += 1;
                 // Flytta på x.

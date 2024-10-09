@@ -25,6 +25,8 @@ class Rat : Enemy
     public override int defenseDice { get; set; }
     public override string Name { get; set; } = "Rat";
     public override int healthPoints { get; set; } = 10;
+    public override ConsoleColor Color { get; set; } = ConsoleColor.Red;
+
     public int move = 0;
     public override void Update()
     {
@@ -44,7 +46,7 @@ class Rat : Enemy
                 move = XPos + 1;
                 Console.SetCursorPosition(XPos, YPos);
                 Console.Write(' ');
-                Console.SetCursorPosition(XPos, YPos - 1);
+                Console.SetCursorPosition(XPos + 1, YPos);
                 Console.Write(Type);
                 XPos += 1;
                 break;

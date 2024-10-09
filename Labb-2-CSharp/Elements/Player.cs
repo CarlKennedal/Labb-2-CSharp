@@ -15,6 +15,8 @@ class Player : LivingElement
     public override int XPos { get; set; }
     public override int YPos { get; set; }
     public Position Position { get; set; }
+    public override ConsoleColor Color { get; set; } = ConsoleColor.Blue;
+
 
     public int renderDistance = 5;
     public int move = 0;
@@ -53,7 +55,7 @@ class Player : LivingElement
                 break;
 
             case ConsoleKey.RightArrow:
-                move = XPos - 1;
+                move = XPos + 1;
                 Console.SetCursorPosition(XPos, YPos);
                 Console.Write(' ');
                 Console.SetCursorPosition(XPos + 1, YPos);
