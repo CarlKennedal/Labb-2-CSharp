@@ -14,6 +14,8 @@ class Player : LivingElement
     public int defenseDice { get; set; }
     public override int XPos { get; set; }
     public override int YPos { get; set; }
+    public double renderDistance = 5;
+
     public override void Update()
     {
         int move = 0;
@@ -56,7 +58,6 @@ class Player : LivingElement
                 XPos += 1;
                 break;
         }
-
     }
 }
 

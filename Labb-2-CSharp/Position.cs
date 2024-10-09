@@ -6,6 +6,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
+
 struct Position
 {
     public int x;
@@ -13,12 +14,10 @@ struct Position
 
     public double DistanceTo(Position other)
     {
-        double posX = other.X - this.X;
-        double posY = other.Y - this.Y;
+        double posX = other.x - this.x;
+        double posY = other.y - this.y;
         return Math.Sqrt(posX * posX + posY * posY);
     }
-
-    public int VerticalDistanceTo(Position position) => Math.Abs(position.X - this.X);
-    public int HorisontalDistanceTo(Position position) => Math.Abs(position.Y - this.Y);
-
+    public int VerticalDistanceTo(Position position) => Math.Abs(position.x - this.x);
+    public int HorisontalDistanceTo(Position position) => Math.Abs(position.y - this.y);
 }

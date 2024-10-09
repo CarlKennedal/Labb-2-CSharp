@@ -18,10 +18,6 @@ class Snake : Enemy
     public override void Update()
     {
         
-
-
     }
-
-
 }
 //Snake: HP = 25, Attack = 3d4 + 2, Defence = 1d8 + 5 
