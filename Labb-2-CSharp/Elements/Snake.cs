@@ -15,13 +15,11 @@ class Snake : Enemy
     public override int attackDice { get; set; }
     public override int defenseDice { get; set; }
 
-    public override int attack { get; set; }
-
-    public override int defense { get; set; }
-
     public override void Update()
     {
         
+
+
     }
 
 

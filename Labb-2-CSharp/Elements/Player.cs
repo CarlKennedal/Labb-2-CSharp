@@ -8,25 +8,20 @@ using System.Threading.Tasks;
 class Player : LivingElement
 {
     public override char Type { get; set; } = '@';
-
     public override int healthPoints { get; set; } = 100;
-
     public override string Name { get; set; } = "Player";
-
-    public override int attack { get; set; } 
-
-    public override int defense { get; set; }
-
+    public int attackDice { get; set; } 
+    public int defenseDice { get; set; }
     public override int XPos { get; set; }
-
     public override int YPos { get; set; }
-
     public override void Update()
     {
+        int move = 0;
         ConsoleKeyInfo movementInput = Console.ReadKey();
         switch (movementInput.Key)
         {
             case ConsoleKey.UpArrow:
+                move = YPos - 1;
                 Console.SetCursorPosition(XPos, YPos);
                 Console.Write(' ');
                 Console.SetCursorPosition(XPos, YPos - 1);
@@ -35,6 +30,7 @@ class Player : LivingElement
                 break;
 
             case ConsoleKey.DownArrow:
+                move = YPos + 1;
                 Console.SetCursorPosition(XPos, YPos);
                 Console.Write(' ');
                 Console.SetCursorPosition(XPos, YPos + 1);
@@ -43,6 +39,7 @@ class Player : LivingElement
                 break;
 
             case ConsoleKey.LeftArrow:
+                move = XPos - 1;
                 Console.SetCursorPosition(XPos, YPos);
                 Console.Write(' ');
                 Console.SetCursorPosition(XPos - 1, YPos);
@@ -51,13 +48,13 @@ class Player : LivingElement
                 break;
 
             case ConsoleKey.RightArrow:
+                move = XPos - 1;
                 Console.SetCursorPosition(XPos, YPos);
                 Console.Write(' ');
                 Console.SetCursorPosition(XPos + 1, YPos);
                 Console.Write(Type);
                 XPos += 1;
                 break;
-
         }
 
     }

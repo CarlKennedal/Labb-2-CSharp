@@ -8,7 +8,6 @@ class Wall : LevelElement
 {
     public override int XPos { get; set; }
     public override int YPos { get; set; }
-
     public override char Type { get; set; } = '#';
 
 }
