@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-class Player : LivingElement
+public class Player : LivingElement
 {
     public override char Type { get; set; } = '@';
     public override int healthPoints { get; set; } = 100;
@@ -32,7 +32,6 @@ class Player : LivingElement
                 Console.SetCursorPosition(XPos, YPos);
                 Console.Write(' ');
                 Console.SetCursorPosition(XPos, YPos - 1);
-                Console.Write(Type);
                 YPos -= 1;
                 break;
 
@@ -41,7 +40,6 @@ class Player : LivingElement
                 Console.SetCursorPosition(XPos, YPos);
                 Console.Write(' ');
                 Console.SetCursorPosition(XPos, YPos + 1);
-                Console.Write(Type);
                 YPos += 1;
                 break;
 
@@ -50,7 +48,6 @@ class Player : LivingElement
                 Console.SetCursorPosition(XPos, YPos);
                 Console.Write(' ');
                 Console.SetCursorPosition(XPos - 1, YPos);
-                Console.Write(Type);
                 XPos -= 1;
                 break;
 
@@ -59,7 +56,6 @@ class Player : LivingElement
                 Console.SetCursorPosition(XPos, YPos);
                 Console.Write(' ');
                 Console.SetCursorPosition(XPos + 1, YPos);
-                Console.Write(Type);
                 XPos += 1;
                 break;
         }

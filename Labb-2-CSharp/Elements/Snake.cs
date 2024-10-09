@@ -22,7 +22,7 @@ class Snake : Enemy
     public int move;
     public override void Update()
     {
-        
+        MoveSnake(this, LevelData.leveldataPlayer);
     }
     public void MoveSnake(Snake snake, Player player)
     {
@@ -31,22 +31,18 @@ class Snake : Enemy
         {
             if(snake.Position.VerticalDistanceTo(player.Position) < 3)
             {
-                move = YPos + 1;
-                Console.SetCursorPosition(XPos, YPos);
+                move = snake.YPos + 1;
+                Console.SetCursorPosition(snake.XPos, snake.YPos);
                 Console.Write(' ');
-                Console.SetCursorPosition(XPos, YPos + 1);
-                Console.Write(Type);
-                YPos += 1;
+                snake.YPos += 1;
                 // Flytta på y.
             }
             else if(snake.Position.HorisontalDistanceTo(player.Position) < 3)
             {
-                move = XPos + 1;
-                Console.SetCursorPosition(XPos, YPos);
+                move = snake.XPos + 1;
+                Console.SetCursorPosition(snake.XPos, snake.YPos);
                 Console.Write(' ');
-                Console.SetCursorPosition(XPos + 1, YPos);
-                Console.Write(Type);
-                XPos += 1;
+                snake.XPos += 1;
                 // Flytta på x.
             }
         }

@@ -39,7 +39,6 @@ class Rat : Enemy
                 Console.SetCursorPosition(XPos, YPos);
                 Console.Write(' ');
                 Console.SetCursorPosition(XPos, YPos - 1);
-                Console.Write(Type);
                 YPos -= 1;
                 break;
             case Direction.RIGHT:
@@ -47,7 +46,6 @@ class Rat : Enemy
                 Console.SetCursorPosition(XPos, YPos);
                 Console.Write(' ');
                 Console.SetCursorPosition(XPos + 1, YPos);
-                Console.Write(Type);
                 XPos += 1;
                 break;
             case Direction.DOWN:
@@ -55,7 +53,6 @@ class Rat : Enemy
                 Console.SetCursorPosition(XPos, YPos);
                 Console.Write(' ');
                 Console.SetCursorPosition(XPos, YPos - 1);
-                Console.Write(Type);
                 YPos += 1;
                 break;
             case Direction.LEFT:
@@ -63,7 +60,6 @@ class Rat : Enemy
                 Console.SetCursorPosition(XPos, YPos);
                 Console.Write(' ');
                 Console.SetCursorPosition(XPos, YPos - 1);
-                Console.Write(Type);
                 XPos -= 1;
                 break;
         }

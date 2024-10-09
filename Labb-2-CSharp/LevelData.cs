@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,12 +11,14 @@ using System.Threading.Tasks;
 public class LevelData
 {
     public List<LevelElement> elements { get; set; } = new List<LevelElement>();
+    public static Player leveldataPlayer = new();
     public void Load(string fileName)
     {
         using (StreamReader reader = new StreamReader(fileName))
         {
             string characters;
             int indexOfY = 0;
+           
             while ((characters = reader.ReadLine()) != null)
             {
             int indexOfX = 0;
@@ -24,7 +27,7 @@ public class LevelData
                     switch (c)
                     {
                         case '@':
-                            var player = new Player();
+                            var player = leveldataPlayer;
                             player.XPos = indexOfX;
                             player.YPos = indexOfY;
                             player.Position = new Position(indexOfX, indexOfY);

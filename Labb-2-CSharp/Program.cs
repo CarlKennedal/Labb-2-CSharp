@@ -13,7 +13,8 @@ while (true)
         mobs.Draw();
     }
 }
-
+/* *****************ATT GÖRA*************
+Kollision, ormarnas rörelse(position structen uppdateras ej???), attack och updatering av hp samt ta bort "döda" mobs*/
 
 
 /*

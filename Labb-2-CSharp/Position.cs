@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-struct Position
+public struct Position
 {
     public int x;
     public int y;
