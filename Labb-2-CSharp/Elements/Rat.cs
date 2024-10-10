@@ -17,9 +17,8 @@ class Rat : Enemy
 {
 
     public override char Type { get; set; } = 'r';
-    public override int XPos { get; set; }
-    public override int YPos { get; set; }
-    public Position Position { get; set; }
+
+    public override Position Position { get; set; }
 
     public override int attackDice { get; set; }
     public override int defenseDice { get; set; }
@@ -35,37 +34,19 @@ class Rat : Enemy
         switch (randomDir)
         {
             case Direction.UP:
-                move = YPos - 1;
-                Console.SetCursorPosition(XPos, YPos);
-                Console.Write(' ');
-                Console.SetCursorPosition(XPos, YPos - 1);
-                YPos -= 1;
+                Move(y: -1);
                 break;
             case Direction.RIGHT:
-                move = XPos + 1;
-                Console.SetCursorPosition(XPos, YPos);
-                Console.Write(' ');
-                Console.SetCursorPosition(XPos + 1, YPos);
-                XPos += 1;
+                Move(x: +1);
                 break;
             case Direction.DOWN:
-                move = YPos - 1;
-                Console.SetCursorPosition(XPos, YPos);
-                Console.Write(' ');
-                Console.SetCursorPosition(XPos, YPos - 1);
-                YPos += 1;
+                Move(y: +1);
                 break;
             case Direction.LEFT:
-                move = XPos - 1;
-                Console.SetCursorPosition(XPos, YPos);
-                Console.Write(' ');
-                Console.SetCursorPosition(XPos, YPos - 1);
-                XPos -= 1;
+                Move(x: -1);
                 break;
         }
     }
-
-
 }
 
 //Rat: HP = 10, Attack = 1d6 + 3, Defence = 1d6 + 1

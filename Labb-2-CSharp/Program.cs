@@ -3,18 +3,25 @@
 levelEtt.Load("Level1.txt"); //Properties på textfilen ska vara always copy
 while (true)
 {
-    foreach(LevelElement draw in levelEtt.elements)
+    foreach (LevelElement draw in levelEtt.elements)
     {
         draw.Draw();
+
     }
     foreach (LivingElement mobs in levelEtt.elements.OfType<LivingElement>())
-    {  
+    {
         mobs.Update();
         mobs.Draw();
     }
 }
-/* *****************ATT GÖRA*************
-Kollision, ormarnas rörelse(position structen uppdateras ej???), attack och updatering av hp samt ta bort "döda" mobs*/
+
+
+
+
+
+
+/* *****************ATT GÖRA*****************
+Kollision, attack och updatering av hp samt ta bort "döda" mobs, render distance*/
 
 
 /*

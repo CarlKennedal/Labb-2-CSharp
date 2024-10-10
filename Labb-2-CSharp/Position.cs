@@ -9,21 +9,33 @@ using System.Threading.Tasks;
 
 public struct Position
 {
-    public int x;
-    public int y;
+    private int x;
 
+    public int X
+    {
+        get { return x; }
+        set { x = value; }
+    }
+
+    private int y;
+
+    public int Y
+    {
+        get { return y; }
+        set { y = value; }
+    }
     public Position(int x, int y)
     {
-        this.x = x;
-        this.y = y;
+        this.X = x;
+        this.Y = y;
     }
 
     public int DistanceTo(Position other)
     {
-        int posX = other.x - this.x;
-        int posY = other.y - this.y;
+        int posX = other.X - this.X;
+        int posY = other.Y - this.Y;
         return (int)Math.Round(Math.Sqrt(posX * posX + posY * posY));
     }
-    public int VerticalDistanceTo(Position position) => Math.Abs(position.x - this.x);
-    public int HorisontalDistanceTo(Position position) => Math.Abs(position.y - this.y);
+    public int VerticalDistanceTo(Position position) => Math.Abs(position.X - this.X);
+    public int HorisontalDistanceTo(Position position) => Math.Abs(position.Y - this.Y);
 }

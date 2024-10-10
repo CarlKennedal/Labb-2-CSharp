@@ -28,32 +28,24 @@ public class LevelData
                     {
                         case '@':
                             var player = leveldataPlayer;
-                            player.XPos = indexOfX;
-                            player.YPos = indexOfY;
                             player.Position = new Position(indexOfX, indexOfY);
                             elements.Add(player);
                             break;
 
                         case '#':
                             var wall = new Wall();
-                            wall.XPos = indexOfX;
-                            wall.YPos = indexOfY;
                             wall.Position = new Position(indexOfX, indexOfY);
                             elements.Add(wall);
                             break;
 
                         case 'r':
                             var rat = new Rat();
-                            rat.XPos = indexOfX;
-                            rat.YPos = indexOfY;
                             rat.Position = new Position(indexOfX, indexOfY);
                             elements.Add(rat);
                             break;
 
                         case 's':
                             var snake = new Snake();
-                            snake.XPos = indexOfX;
-                            snake.YPos = indexOfY;
                             snake.Position = new Position(indexOfX, indexOfY);
                             elements.Add(snake);
                             break;
