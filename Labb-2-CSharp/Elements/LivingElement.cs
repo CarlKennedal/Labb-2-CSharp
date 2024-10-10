@@ -16,6 +16,7 @@ public abstract class LivingElement : LevelElement
        /* IsCollidingWith();*/
         Console.SetCursorPosition(Position.X, Position.Y);
         Console.Write(' ');
+        
         Position = new Position { X = Position.X + x, Y = Position.Y + y };
         Console.SetCursorPosition(Position.X, Position.Y);
     }

@@ -12,7 +12,7 @@ public class Player : LivingElement
     public override char Type { get; set; } = '@';
     public override int healthPoints { get; set; } = 100;
     public override string Name { get; set; } = "Player";
-    public int attackDice { get; set; } 
+    public int attackDice { get; set; }
     public int defenseDice { get; set; }
     public override Position Position { get; set; }
     public override ConsoleColor Color { get; set; } = ConsoleColor.Blue;
@@ -21,16 +21,16 @@ public class Player : LivingElement
     public int renderDistance = 5;
     public int move = 0;
 
-  
+
+
     public override void Update()
     {
-        
         ConsoleKeyInfo movementInput = Console.ReadKey();
         switch (movementInput.Key)
-        {   
+        {
             case ConsoleKey.UpArrow:
                 Move(y: -1);
-                    break;
+                break;
             case ConsoleKey.DownArrow:
                 Move(y: +1);
                 break;

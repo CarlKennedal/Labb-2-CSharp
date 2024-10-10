@@ -20,6 +20,7 @@ class Snake : Enemy
 
 
     public int move;
+
     public override void Update()
     {
         MoveSnake(this, LevelData.leveldataPlayer);

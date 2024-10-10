@@ -27,6 +27,7 @@ class Rat : Enemy
     public override ConsoleColor Color { get; set; } = ConsoleColor.Red;
 
     public int move = 0;
+
     public override void Update()
     {
         Random randomDirection = new Random();

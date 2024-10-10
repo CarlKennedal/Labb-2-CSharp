@@ -12,10 +12,7 @@ public abstract class LevelElement
     public abstract Position Position { get; set; }
     public abstract char Type { get; set; }
     public abstract ConsoleColor Color { get; set; }
-    public bool IsCollidingWith(LevelElement other)
-    {
-        return this.Position.X == other.Position.X && this.Position.Y == other.Position.Y;
-    }
+    public bool IsColliding {  get; set; }
 
 
     public void Draw()
@@ -25,3 +22,5 @@ public abstract class LevelElement
         Console.Write(Type);
     }
 }
+
+// Kolla x och y +-1 i listan av elements om det ingpår i något annat och isåfall blocka gången dit, ta det elementet i vägen och attackera om det är mob
