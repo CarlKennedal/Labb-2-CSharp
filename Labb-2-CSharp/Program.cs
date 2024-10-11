@@ -1,19 +1,45 @@
-﻿using System.Xml.Linq;
-
+﻿using System.Linq;
+using System.Reflection.Emit;
+using System.Xml.Linq;
 LevelData levelEtt = new LevelData();
 
 levelEtt.Load("Level1.txt"); //Properties på textfilen ska vara always copy
+Player player = levelEtt.elements.First(e => e is Player)as Player;
 
-/*levelEtt.Load("Level1.txt"); //Properties på textfilen ska vara always copy*/
 while (true)
 {
+    RenderDistance(player, levelEtt);
     foreach (LevelElement draw in levelEtt.elements)
     {
-        draw.Draw();
+        if (!draw.IsVisible)
+        {
+            continue;
+        }
+        draw.Draw(levelEtt);
     }
     foreach (LivingElement mobs in levelEtt.elements.OfType<LivingElement>())
     {
         mobs.Update();
+    }
+}
+
+static void RenderDistance(Player player, LevelData level)
+{
+    foreach (var otherElement in level.elements)
+    {
+        int distance = player.Position.DistanceTo(otherElement.Position);
+        if (distance <= 5)
+        {
+            otherElement.IsVisible = true;
+        }
+        if (distance >= 5)
+        {
+            if (otherElement is Enemy)
+            {
+                var enemy = (Enemy)otherElement;
+                enemy.IsVisible = false;
+            }
+        }
     }
 }
 
@@ -36,14 +62,6 @@ public class CollisionHandler
             }            
         }
         return null;
-    }
-}
-public class Render
-{
-    private LevelData level;
-    public Render(LevelData level)
-    {
-        this.level = level;
     }
 }
 

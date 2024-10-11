@@ -12,7 +12,6 @@ public abstract class Enemy : LivingElement
 {
 	public abstract int attackDice { get; set; }
     public abstract int defenseDice { get; set; }
-    public bool IsVisible {  get; set; }
 }
 
 
