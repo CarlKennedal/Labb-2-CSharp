@@ -31,5 +31,9 @@ public abstract class LivingElement : LevelElement
             //attack från enemy
         }
     }
+    public void Attack(LevelElement attacker, LevelElement defender)
+    {
+
+    }
     public abstract void Update();
 }
