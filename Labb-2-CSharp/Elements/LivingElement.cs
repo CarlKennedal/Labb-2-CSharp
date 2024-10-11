@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,12 +13,20 @@ public abstract class LivingElement : LevelElement
     public abstract string Name { get; set; }
 
     public void Move(int x = 0, int y = 0)
+
     {
-       /* IsCollidingWith();*/
         Console.SetCursorPosition(Position.X, Position.Y);
         Console.Write(' ');
-        
-        Position = new Position { X = Position.X + x, Y = Position.Y + y };
+        CollisionHandler collisionHandler = new CollisionHandler(LevelData);
+        LevelElement collidingElement = collisionHandler.CollisionCheck(Position.X + x, Position.Y + y);
+        if (collidingElement is null)
+        {
+            Position = new Position { X = Position.X + x, Y = Position.Y + y };
+        }
+        if (collidingElement is Enemy)
+        {
+            //attack
+        }
         Console.SetCursorPosition(Position.X, Position.Y);
     }
 

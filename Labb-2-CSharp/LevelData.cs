@@ -12,7 +12,7 @@ public class LevelData
 {
 
     public List<LevelElement> elements { get; set; } = new List<LevelElement>();
-    public static Player leveldataPlayer = new();
+    public static Player leveldataPlayer;
     public void Load(string fileName)
     {
         using (StreamReader reader = new StreamReader(fileName))
@@ -28,25 +28,25 @@ public class LevelData
                     switch (c)
                     {
                         case '@':
-                            var player = leveldataPlayer;
+                            var player = leveldataPlayer = new Player() { LevelData = this };
                             player.Position = new Position(indexOfX, indexOfY);
                             elements.Add(player);
                             break;
 
                         case '#':
-                            var wall = new Wall();
+                            var wall = new Wall() { LevelData = this };
                             wall.Position = new Position(indexOfX, indexOfY);
                             elements.Add(wall);
                             break;
 
                         case 'r':
-                            var rat = new Rat();
+                            var rat = new Rat() { LevelData = this };
                             rat.Position = new Position(indexOfX, indexOfY);
                             elements.Add(rat);
                             break;
 
                         case 's':
-                            var snake = new Snake();
+                            var snake = new Snake() { LevelData = this };
                             snake.Position = new Position(indexOfX, indexOfY);
                             elements.Add(snake);
                             break;

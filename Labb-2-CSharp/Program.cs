@@ -1,7 +1,10 @@
-﻿LevelData levelEtt = new LevelData();
+﻿using System.Xml.Linq;
 
+LevelData levelEtt = new LevelData();
 
 levelEtt.Load("Level1.txt"); //Properties på textfilen ska vara always copy
+
+/*levelEtt.Load("Level1.txt"); //Properties på textfilen ska vara always copy*/
 while (true)
 {
     foreach (LevelElement draw in levelEtt.elements)
@@ -11,54 +14,36 @@ while (true)
     foreach (LivingElement mobs in levelEtt.elements.OfType<LivingElement>())
     {
         mobs.Update();
-        mobs.Draw();
     }
 }
 
-void CollisionCheck(int x, int y)
+public class CollisionHandler
 {
-    foreach (var element in levelEtt.elements)
+    private LevelData level;
+
+    public CollisionHandler(LevelData level)
     {
-        var right = element.Position.X + 1;
-        foreach (var elementComparison in levelEtt.elements)
+        this.level = level;
+    }
+
+    public LevelElement CollisionCheck(int x, int y)
+    {
+        foreach (var element in level.elements)
         {
-            var check = elementComparison.Position.X;
-            if (element != elementComparison && right == check)
+            if(element.Position.X == x && element.Position.Y == y)
             {
-                element.Position = new Position { X = element.Position.X, Y = element.Position.Y };
-                //Attack
-            }
+                return element;
+            }            
         }
-        var left = element.Position.X + 1;
-        foreach (var elementComparison in levelEtt.elements)
-        {
-            var check = elementComparison.Position.X;
-            if (element != elementComparison && right == check)
-            {
-                element.Position = new Position { X = element.Position.X, Y = element.Position.Y };
-                //Attack
-            }
-        }
-        var up = element.Position.Y - 1;
-        foreach (var elementComparison in levelEtt.elements)
-        {
-            var check = elementComparison.Position.Y;
-            if (element != elementComparison && right == check)
-            {
-                element.Position = new Position { X = element.Position.X, Y = element.Position.Y };
-                //Attack
-            }
-        }
-        var down = element.Position.Y + 1;
-        foreach (var elementComparison in levelEtt.elements)
-        {
-            var check = elementComparison.Position.Y;
-            if (element != elementComparison && right == check)
-            {
-                element.Position = new Position { X = element.Position.X, Y = element.Position.Y };
-                //Attack
-            }
-        }
+        return null;
+    }
+}
+public class Render
+{
+    private LevelData level;
+    public Render(LevelData level)
+    {
+        this.level = level;
     }
 }
 

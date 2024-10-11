@@ -14,14 +14,12 @@ public class Player : LivingElement
     public override string Name { get; set; } = "Player";
     public int attackDice { get; set; }
     public int defenseDice { get; set; }
+
     public override Position Position { get; set; }
     public override ConsoleColor Color { get; set; } = ConsoleColor.Blue;
 
-
     public int renderDistance = 5;
     public int move = 0;
-
-
 
     public override void Update()
     {
