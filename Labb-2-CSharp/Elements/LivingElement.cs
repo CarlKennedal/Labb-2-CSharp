@@ -9,11 +9,10 @@ using System.Threading.Tasks;
 public abstract class LivingElement : LevelElement
 {
     public abstract int healthPoints { get; set; }
-
     public abstract string Name { get; set; }
-
+    public abstract Dice attackDice {  get; set; }
+    public abstract Dice defenseDice { get; set; }
     public void Move(int x = 0, int y = 0)
-
     {
         Console.SetCursorPosition(Position.X, Position.Y);
         Console.Write(' ');
@@ -23,12 +22,14 @@ public abstract class LivingElement : LevelElement
         {
             Position = new Position { X = Position.X + x, Y = Position.Y + y };
         }
-        if (collidingElement is Enemy)
+        if (this is Player && collidingElement is Enemy)
         {
-            //attack
+            //attack från spelare
         }
-        Console.SetCursorPosition(Position.X, Position.Y);
+        else if (this is Enemy && collidingElement is Player)
+        {
+            //attack från enemy
+        }
     }
-
     public abstract void Update();
 }

@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-class Dice
+public class Dice
 {
     public int numberOfDice;
     public int sidesPerDice;
@@ -25,8 +26,11 @@ class Dice
         {
             total += random.Next(1, sidesPerDice + 1);
         }
-
         total += modifier;
         return total;
+    }
+    public string ToString()
+    {
+        return $"{numberOfDice}d{sidesPerDice} + {modifier}";
     }
 }

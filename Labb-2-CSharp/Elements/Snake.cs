@@ -9,17 +9,12 @@ using System.Threading.Tasks;
 class Snake : Enemy
 {
     public override char Type { get; set; } = 's';
-
-
     public override Position Position { get; set; }
     public override string Name { get; set; } = "Snake";
     public override int healthPoints { get; set; } = 25;
-    public override int attackDice { get; set; }
-    public override int defenseDice { get; set; }
+    public override Dice attackDice { get; set; } = new Dice(3, 4, 2);
+    public override Dice defenseDice { get; set; } = new Dice(1, 8, 0);
     public override ConsoleColor Color { get; set; } = ConsoleColor.Green;
-
-
-    public int move;
 
     public override void Update()
     {
@@ -28,7 +23,7 @@ class Snake : Enemy
     public void MoveSnake(Snake snake, Player player)
     {
         int distance = snake.Position.DistanceTo(player.Position);
-        if (distance < 3)
+        if (distance <= 2)
         {
             if (player.Position.Y <= snake.Position.Y - 2)
             {
@@ -46,6 +41,10 @@ class Snake : Enemy
             {
                 Move(x: -1);
             }
+        }
+        if (distance >= 3)
+        {
+            Move(y: +0);
         }
     }
 }

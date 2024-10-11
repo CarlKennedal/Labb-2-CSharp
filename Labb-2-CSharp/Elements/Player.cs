@@ -13,8 +13,8 @@ public class Player : LivingElement
     public override char Type { get; set; } = '@';
     public override int healthPoints { get; set; } = 100;
     public override string Name { get; set; } = "Player";
-    public int attackDice { get; set; }
-    public int defenseDice { get; set; }
+    public override Dice attackDice { get; set; } = new Dice(2,6,2);
+    public override Dice defenseDice { get; set; } = new Dice (2,6,0);
 
     public override Position Position { get; set; }
     public override ConsoleColor Color { get; set; } = ConsoleColor.Blue;

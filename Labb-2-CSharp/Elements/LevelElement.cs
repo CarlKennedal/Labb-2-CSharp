@@ -15,7 +15,7 @@ public abstract class LevelElement
     public abstract ConsoleColor Color { get; set; }
     public bool IsColliding { get; set; }
     public LevelData LevelData { get; init; }
-    public bool IsVisible {  get; set; }
+    public bool IsVisible { get; set; }
     public void Draw(LevelData level)
     {
         Console.ForegroundColor = Color;
