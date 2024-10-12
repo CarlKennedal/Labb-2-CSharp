@@ -48,5 +48,3 @@ public class Player : LivingElement
         }
     }
 }
-
-//Player: HP = 100, Attack = 2d6+2, Defence = 2d6+0

@@ -4,7 +4,7 @@ using System.Xml.Linq;
 using static System.Net.Mime.MediaTypeNames;
 LevelData levelEtt = new LevelData();
 
-levelEtt.Load("Level1.txt"); //Properties på textfilen ska vara always copy
+levelEtt.Load("Level1.txt");
 Player player = levelEtt.elements.First(e => e is Player)as Player;
 
 while (true)
@@ -115,18 +115,3 @@ public class CombatHandler
         }
     }
 }
-    
-/* *****************ATT GÖRA*****************
-Kollision, attack och updatering av hp samt ta bort "döda" mobs, render distance*/
-
-
-/*
-Initiera spelet
-
-Medan spelet är igång:
-Input för processen
-Uppdatera spelets status
-Rendera spel
-
-Rensning och avslutning
-*/

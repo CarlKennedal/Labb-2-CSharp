@@ -50,4 +50,3 @@ class Snake : Enemy
     }
 }
 
-//Snake: HP = 25, Attack = 3d4 + 2, Defence = 1d8 + 5 

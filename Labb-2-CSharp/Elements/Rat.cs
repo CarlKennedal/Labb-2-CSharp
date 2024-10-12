@@ -47,4 +47,4 @@ class Rat : Enemy
     }
 }
 
-//Rat: HP = 10, Attack = 1d6 + 3, Defence = 1d6 + 1
+
