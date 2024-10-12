@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Reflection.Emit;
 using System.Xml.Linq;
+using static System.Net.Mime.MediaTypeNames;
 LevelData levelEtt = new LevelData();
 
 levelEtt.Load("Level1.txt"); //Properties på textfilen ska vara always copy
@@ -17,9 +18,14 @@ while (true)
         }
         draw.Draw(levelEtt);
     }
-    foreach (LivingElement mobs in levelEtt.elements.OfType<LivingElement>())
+    foreach (LivingElement mobs in levelEtt.elements.ToList().OfType<LivingElement>())
     {
         mobs.Update();
+    }
+    if (!levelEtt.elements.OfType<Enemy>().Any())
+    {
+        Console.Clear();
+        Console.WriteLine("You have won!");
     }
 }
 
@@ -76,29 +82,18 @@ public class CombatHandler
         int atack = attacker.attackDice.Throw();
         int defense = defender.defenseDice.Throw();
         int damage = atack - defense;
-        //skriv ut tärningskastet
+        if (damage < 1)
+        {
+            damage = 0;
+        }
+        attacker.attackDice.ToString(attacker, defender, damage);
         if (damage > 0)
         {
             defender.healthPoints -= damage;
         }
         if (defender.healthPoints > 0)
         {
-            CounterAttack(defender, attacker);
-        }
-        else if (defender.healthPoints < 1)
-        {
-            
-        }
-    }
-    public void CounterAttack(LivingElement counterAttacker, LivingElement defender)
-    {
-        int atack = counterAttacker.attackDice.Throw();
-        int defense = defender.defenseDice.Throw();
-        int counterDamage = atack - defense;
-        //skriv ut tärningskastet
-        if (counterDamage > 0)
-        {
-            defender.healthPoints -= counterDamage;
+            Attack(defender, attacker);
         }
         else if (defender.healthPoints < 1)
         {

@@ -21,10 +21,13 @@ public class Player : LivingElement
 
     public int renderDistance = 5;
     public int move = 0;
-
+    public int turns = -1;
 
     public override void Update()
     {
+        turns++;
+        Console.SetCursorPosition(0,0);
+        Console.Write($"Player: {healthPoints} HP, {attackDice.numberOfDice}d{attackDice.sidesPerDice}+{attackDice.modifier} ATK, {defenseDice.numberOfDice}d{defenseDice.sidesPerDice}+{defenseDice.modifier} DEF.\n Has survived a total of {turns} turns!");
         ConsoleKeyInfo movementInput = Console.ReadKey();
         switch (movementInput.Key)
         {

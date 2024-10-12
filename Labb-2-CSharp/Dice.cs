@@ -10,7 +10,12 @@ public class Dice
     public int numberOfDice;
     public int sidesPerDice;
     public int modifier;
-
+    public int rowsOfDamage = 0;
+    private LevelData level;
+    public Dice(LevelData level)
+    {
+        this.level = level;
+    }
     public Dice(int numberOfDice, int sidesPerDice, int modifier)
     {
         this.numberOfDice = numberOfDice;
@@ -29,8 +34,23 @@ public class Dice
         total += modifier;
         return total;
     }
-    public string ToString()
+    public void ToString(LivingElement attacker, LivingElement defender, int damage)
     {
-        return $"{numberOfDice}d{sidesPerDice} + {modifier}";
+        Console.SetCursorPosition(56, rowsOfDamage);
+        rowsOfDamage += 2;
+        if (attacker is Enemy)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"{attacker} attacks {defender} with a roll of {numberOfDice}d{sidesPerDice} + {modifier} dealing {damage} damage.");
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+        if (attacker is Player)
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"{attacker} attacks {defender} with a roll of {numberOfDice}d{sidesPerDice} + {modifier} dealing {damage} damage.");
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.White;
+        }
     }
 }
