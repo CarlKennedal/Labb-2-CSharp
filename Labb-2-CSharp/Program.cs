@@ -64,7 +64,49 @@ public class CollisionHandler
         return null;
     }
 }
-
+public class CombatHandler
+{
+    private LevelData level;
+    public CombatHandler(LevelData level)
+    {
+        this.level = level;
+    }
+    public void Attack(LivingElement attacker, LivingElement defender)
+    {
+        int atack = attacker.attackDice.Throw();
+        int defense = defender.defenseDice.Throw();
+        int damage = atack - defense;
+        //skriv ut tärningskastet
+        if (damage > 0)
+        {
+            defender.healthPoints -= damage;
+        }
+        if (defender.healthPoints > 0)
+        {
+            CounterAttack(defender, attacker);
+        }
+        else if (defender.healthPoints < 1)
+        {
+            
+        }
+    }
+    public void CounterAttack(LivingElement counterAttacker, LivingElement defender)
+    {
+        int atack = counterAttacker.attackDice.Throw();
+        int defense = defender.defenseDice.Throw();
+        int counterDamage = atack - defense;
+        //skriv ut tärningskastet
+        if (counterDamage > 0)
+        {
+            defender.healthPoints -= counterDamage;
+        }
+        else if (defender.healthPoints < 1)
+        {
+            level.elements.Remove(defender);
+        }
+    }
+}
+    
 /* *****************ATT GÖRA*****************
 Kollision, attack och updatering av hp samt ta bort "döda" mobs, render distance*/
 

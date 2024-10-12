@@ -10,7 +10,7 @@ public abstract class LivingElement : LevelElement
 {
     public abstract int healthPoints { get; set; }
     public abstract string Name { get; set; }
-    public abstract Dice attackDice {  get; set; }
+    public abstract Dice attackDice { get; set; }
     public abstract Dice defenseDice { get; set; }
     public void Move(int x = 0, int y = 0)
     {
@@ -24,16 +24,14 @@ public abstract class LivingElement : LevelElement
         }
         if (this is Player && collidingElement is Enemy)
         {
-            //attack från spelare
+            CombatHandler combatHandler = new CombatHandler(LevelData);
+            combatHandler.Attack(this, collidingElement as LivingElement );
         }
         else if (this is Enemy && collidingElement is Player)
         {
-            //attack från enemy
+            CombatHandler combatHandler = new CombatHandler(LevelData);
+            combatHandler.Attack(this, collidingElement as LivingElement);
         }
-    }
-    public void Attack(LevelElement attacker, LevelElement defender)
-    {
-
     }
     public abstract void Update();
 }

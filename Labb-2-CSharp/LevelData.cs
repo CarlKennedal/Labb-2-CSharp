@@ -17,7 +17,7 @@ public class LevelData
         using (StreamReader reader = new StreamReader(fileName))
         {
             string characters;
-            int indexOfY = 0;
+            int indexOfY = 4;
            
             while ((characters = reader.ReadLine()) != null)
             {
