@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 public class LevelData
 {
+    public int damageOutput = -1;
     public List<LevelElement> elements { get; set; } = new List<LevelElement>();
     public static Player leveldataPlayer;
     public void Load(string fileName)

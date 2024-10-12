@@ -22,11 +22,6 @@ while (true)
     {
         mobs.Update();
     }
-    if (!levelEtt.elements.OfType<Enemy>().Any())
-    {
-        Console.Clear();
-        Console.WriteLine("You have won!");
-    }
 }
 
 static void RenderDistance(Player player, LevelData level)
@@ -86,14 +81,33 @@ public class CombatHandler
         {
             damage = 0;
         }
-        attacker.attackDice.ToString(attacker, defender, damage);
+        attacker.attackDice.ToString(attacker, defender, damage,level);
         if (damage > 0)
         {
             defender.healthPoints -= damage;
         }
         if (defender.healthPoints > 0)
         {
-            Attack(defender, attacker);
+            CounterAttack(defender, attacker);
+        }
+        else if (defender.healthPoints < 1)
+        {
+            level.elements.Remove(defender);
+        }
+    }
+    public void CounterAttack(LivingElement attacker, LivingElement defender)
+    {
+        int atack = attacker.attackDice.Throw();
+        int defense = defender.defenseDice.Throw();
+        int damage = atack - defense;
+        if (damage < 1)
+        {
+            damage = 0;
+        }
+        attacker.attackDice.ToString(attacker, defender, damage,level);
+        if (damage > 0)
+        {
+            defender.healthPoints -= damage;
         }
         else if (defender.healthPoints < 1)
         {

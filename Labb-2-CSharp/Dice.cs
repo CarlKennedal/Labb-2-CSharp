@@ -10,7 +10,6 @@ public class Dice
     public int numberOfDice;
     public int sidesPerDice;
     public int modifier;
-    public int rowsOfDamage = 0;
     private LevelData level;
     public Dice(LevelData level)
     {
@@ -34,10 +33,10 @@ public class Dice
         total += modifier;
         return total;
     }
-    public void ToString(LivingElement attacker, LivingElement defender, int damage)
+    public void ToString(LivingElement attacker, LivingElement defender, int damage,LevelData level)
     {
-        Console.SetCursorPosition(56, rowsOfDamage);
-        rowsOfDamage += 2;
+        level.damageOutput += 1;
+        Console.SetCursorPosition(56, level.damageOutput);
         if (attacker is Enemy)
         {
             Console.ForegroundColor = ConsoleColor.Red;

@@ -22,6 +22,7 @@ class Snake : Enemy
     }
     public void MoveSnake(Snake snake, Player player)
     {
+        Console.ForegroundColor = ConsoleColor.White;
         int distance = snake.Position.DistanceTo(player.Position);
         if (distance <= 2)
         {
